@@ -1,20 +1,21 @@
+name: Build
+
 on:
-  # Trigger analysis when pushing to your main branches, and when creating a pull request.
   push:
     branches:
       - main
 
-name: Main Workflow
+
 jobs:
-  sonarqube:
-    runs-on: ubuntu-latest
+  build:
+    name: Build
+    runs-on: windows-latest
+    permissions: read-all
     steps:
-    - uses: actions/checkout@v3
-      with:
-        # Disabling shallow clones is recommended for improving the relevancy of reporting
-        fetch-depth: 0
-    - name: SonarQube Scan
-      uses: sonarsource/sonarqube-scan-action@master
-      env:
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+      - name: Build and analyze
+        env:
+         shell: powershell
+        run: |
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"vegasergio2851_eSHopOnWeb_AYuXZ111lV_fnToDXzUy" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}"
+          dotnet build
+          .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
