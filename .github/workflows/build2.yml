@@ -42,7 +42,7 @@ jobs:
       - name: Build and analyze
         env:
          shell: powershell
-         run: |
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"vegasergio2851_eSHopOnWeb_AYuXZ111lV_fnToDXzUy" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}"
-          dotnet build
-          .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+        run: |
+         .\.sonar\scanner\dotnet-sonarscanner begin /k:"vegasergio2851_eSHopOnWeb_AYuXZ111lV_fnToDXzUy" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}"
+         dotnet build
+         .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
