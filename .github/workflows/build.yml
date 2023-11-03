@@ -10,10 +10,9 @@ jobs:
   build:
     name: Build
     runs-on: windows-latest
-    
+    permissions: read-all
     steps:
-      - name: action
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
       - name: Set up JDK 17
@@ -40,8 +39,8 @@ jobs:
           New-Item -Path .\.sonar\scanner -ItemType Directory
           dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
       - name: Build and analyze
-    env:
-        shell: powershell
+        env:
+         shell: powershell
         run: |
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"vegasergio2851_eSHopOnWeb_AYuVgVTUlV_fnToDXzUW" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}"
           dotnet build
