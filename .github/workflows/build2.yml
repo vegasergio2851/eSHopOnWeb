@@ -16,7 +16,6 @@ jobs:
         env:
          shell: powershell
         run: |
-          C:\Users\Public\dotnet-sonarscanner begin /k:"vegasergio2851_eSHopOnWeb_AYuXne0WlV_fnToDXzVE" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}"
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"vegasergio2851_eSHopOnWeb_AYuXne0WlV_fnToDXzVE" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}"
           dotnet build
-          C:\Users\Public\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
- 
+          .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
