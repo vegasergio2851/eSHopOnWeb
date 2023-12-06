@@ -1,4 +1,4 @@
-name: cnc-sig-action
+name: cnc-sig-action 
 on:
   push:
     branches: [ main, master, develop, stage, release ]
