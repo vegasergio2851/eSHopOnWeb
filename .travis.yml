@@ -1,2 +1,8 @@
 language: csharp
 solution: eShopOnWeb.sln
+
+jobs:
+  include:
+    - dotnet: 6.0
+      mono: none
+    - mono: latest
